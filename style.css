@@ -1,0 +1,231 @@
+:root {
+  --primary-color: #00b4ff;
+  --secondary-color: #0077cc;
+  --accent-color: #ff6b6b;
+  --light-bg: rgba(255, 255, 255, 0.9);
+  --dark-text: #003366;
+  --glow-color: rgba(0, 180, 255, 0.3);
+  --water-bg: url('assets/bg-water.jpg');
+  --font-main: 'Fredoka', sans-serif;
+  --transition: all 0.4s ease-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--water-bg) center/cover fixed;
+  color: var(--dark-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Header Fixo */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  transition: var(--transition);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--dark-text);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 0 15px var(--glow-color);
+}
+
+.btn-inicio {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(255,107,107,0.4);
+}
+
+.btn-inicio:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255,107,107,0.5);
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), var(--water-bg);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 800px;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  animation: pulse 2s infinite alternate;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(0,180,255,0.5);
+}
+
+.cta-button:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,180,255,0.7);
+}
+
+/* About Section */
+.about-section {
+  padding: 5rem 10%;
+  background: var(--light-bg);
+  text-align: center;
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+}
+
+/* Footer */
+.footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.03);
+  }
+}
+
+/* Efeito de ondas no fundo (opcional) */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(0,180,255,0.1) 0%, transparent 20%),
+  radial-gradient(circle at 70% 70%, rgba(0,180,255,0.1) 0%, transparent 20%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem 2%;
+}
+
+.nav-menu ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+.cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+}
+}
