@@ -1,47 +1,662 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Arakaki Aventura - Rio Manso, Cuiabá</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arakaki - Aventuras no Rio Manso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-principal: #ff6b35;
+            --cor-secundaria: #2d4059;
+            --cor-acento: #ffd166;
+            --cor-fundo: #073b4c;
+            --cor-texto: #f7fff7;
+            --sombra: 3px 3px 0px rgba(0,0,0,0.3);
+            --borda: 3px solid var(--cor-principal);
+            --gradiente: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: url('https://placehold.co/1920x1080/ff6b35/ffd166?text=Rio+Manso') center/cover fixed;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #ff99cc;
+            background-image:
+                radial-gradient(circle at 20% 30%, #ff66cc 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, #ff99cc 0%, transparent 20%),
+                linear-gradient(135deg, #ff66cc, #ff99cc);
+            position: relative;
+        }
+
+        /* Imagem de fundo com transparência leve */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/hq720.jpg'); /* Imagem do oceano com globo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.7; /* Transparência leve */
+            z-index: -1;
+        }
+
+        /* Header Estilo Anos 2000 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            border-bottom: 3px solid #ff3399;
+            padding: 15px 20px;
+            z-index: 1000;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .img-logoh{
+            display: flex;
+            align-items: center;
+            max-width: 50px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 3px solid #ff3399;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+        }
+
+        nav a:hover {
+            background: #ff3399;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+        }
+
+        .btn-inicio {
+            background: #ff3399;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            padding: 10px 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            text-shadow: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-inicio:hover {
+            background: #ff66cc;
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 120px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            border: 3px solid #ff3399;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            min-height: 500px;
+        }
+
+        .sidebar h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 18px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #ff3399;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu li:hover {
+            background: #ff3399;
+            transform: translateX(5px);
+        }
+
+        .content-area {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            padding: 30px;
+            border: 3px solid #ff3399;
+            border-radius: 15px;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Comic Neue', cursive;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            padding: 20px;
+            border: 3px solid #ff3399;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ff3399, #ff66cc);
+        }
+
+        .feature-card h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            height: 150px;
+            background: linear-gradient(45deg, #ff66cc, #ff99cc);
+            border: 3px solid #ff3399;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: rotate(2deg) scale(1.05);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid #ff3399;
+            margin-top: 30px;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efeito de glitch para o título */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff3399;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #ff66cc;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(42px, 9999px, 44px, 0); }
+            5% { clip: rect(12px, 9999px, 59px, 0); }
+            10% { clip: rect(48px, 9999px, 29px, 0); }
+            15% { clip: rect(42px, 9999px, 73px, 0); }
+            20% { clip: rect(63px, 9999px, 27px, 0); }
+            25% { clip: rect(34px, 9999px, 55px, 0); }
+            30% { clip: rect(86px, 9999px, 73px, 0); }
+            35% { clip: rect(20px, 9999px, 20px, 0); }
+            40% { clip: rect(26px, 9999px, 60px, 0); }
+            45% { clip: rect(25px, 9999px, 66px, 0); }
+            50% { clip: rect(57px, 9999px, 98px, 0); }
+            55% { clip: rect(5px, 9999px, 46px, 0); }
+            60% { clip: rect(82px, 9999px, 31px, 0); }
+            65% { clip: rect(54px, 9999px, 27px, 0); }
+            70% { clip: rect(28px, 9999px, 99px, 0); }
+            75% { clip: rect(45px, 9999px, 69px, 0); }
+            80% { clip: rect(23px, 9999px, 85px, 0); }
+            85% { clip: rect(54px, 9999px, 84px, 0); }
+            90% { clip: rect(45px, 9999px, 47px, 0); }
+            95% { clip: rect(37px, 9999px, 20px, 0); }
+            100% { clip: rect(73px, 9999px, 99px, 0); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            5% { clip: rect(52px, 9999px, 74px, 0); }
+            10% { clip: rect(79px, 9999px, 85px, 0); }
+            15% { clip: rect(75px, 9999px, 5px, 0); }
+            20% { clip: rect(67px, 9999px, 61px, 0); }
+            25% { clip: rect(14px, 9999px, 79px, 0); }
+            30% { clip: rect(1px, 9999px, 66px, 0); }
+            35% { clip: rect(86px, 9999px, 30px, 0); }
+            40% { clip: rect(23px, 9999px, 98px, 0); }
+            45% { clip: rect(85px, 9999px, 72px, 0); }
+            50% { clip: rect(71px, 9999px, 75px, 0); }
+            55% { clip: rect(2px, 9999px, 48px, 0); }
+            60% { clip: rect(30px, 9999px, 16px, 0); }
+            65% { clip: rect(59px, 9999px, 50px, 0); }
+            70% { clip: rect(41px, 9999px, 62px, 0); }
+            75% { clip: rect(2px, 9999px, 82px, 0); }
+            80% { clip: rect(47px, 9999px, 73px, 0); }
+            85% { clip: rect(3px, 9999px, 27px, 0); }
+            90% { clip: rect(26px, 9999px, 55px, 0); }
+            95% { clip: rect(42px, 9999px, 97px, 0); }
+            100% { clip: rect(38px, 9999px, 49px, 0); }
+        }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ff66cc;
+            border-left: 3px solid #ff3399;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff3399;
+            border: 2px solid #ff66cc;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff66cc;
+        }
+
+        /* Elementos em estilo Barbie */
+        .barbie-style {
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            border: 3px solid #ff3399;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .barbie-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+        }
+
+        .barbie-button {
+            background: #ff3399;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            padding: 10px 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            text-shadow: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .barbie-button:hover {
+            background: #ff66cc;
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+        }
+
+        .barbie-image {
+            width: 100%;
+            height: 200px;
+            background: #ff66cc;
+            border: 3px solid #ff3399;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .logo-text {
+                font-size: 14px;
+            }
+            
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="header">
-<div class="logo-container">
-    <img src="https://via.placeholder.com/150x60?text=Arakaki+Logo" alt="Logo Arakaki" class="logo">
-</div>
-<nav class="nav-menu">
-    <ul>
-    <li><a href="#inicio" class="nav-link active">Início</a></li>
-    <li><a href="#pacotes" class="nav-link">Pacotes</a></li>
-    <li><a href="#sobre" class="nav-link">Sobre Nós</a></li>
-    <li><a href="#contato" class="nav-link">Contato</a></li>
-    </ul>
-</nav>
-<button class="btn-inicio">Início</button>
-</header>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/logos-removebg-preview.png" alt="">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">INÍCIO</a></li>
+                    <li><a href="#sobre">SOBRE</a></li>
+                    <li><a href="#servicos">SERVIÇOS</a></li>
+                    <li><a href="#galeria">GALERIA</a></li>
+                    <li><a href="#contato">CONTATO</a></li>
+                </ul>
+            </nav>
+            <button class="btn-inicio" onclick="scrollToTop()">INÍCIO</button>
+        </div>
+    </header>
 
-<main class="hero-section">
-<div class="hero-content">
-    <h1 class="hero-title">Arakaki Aventura</h1>
-    <p class="hero-subtitle">Descubra o Rio Manso em Cuiabá com emoção, beleza e adrenalina!</p>
-    <button class="cta-button">Reserve sua Aventura</button>
-</div>
-</main>
+    <main>
+        <div class="img-logoh">
+            <img src="assets/Arakaki-30-09-2025.png" alt="logo">
+        </div>
+        <div class="container">
+            <div class="sidebar">
+                <h3>AVENTURAS</h3>
+                <ul class="sidebar-menu">
+                    <li onclick="alert('Você clicou em Rafting!')">Rafting Extremo</li>
+                    <li onclick="alert('Você clicou em Kayak!')">Kayak Aventura</li>
+                    <li onclick="alert('Você clicou em Trilhas!')">Trilhas Ecológicas</li>
+                    <li onclick="alert('Você clicou em Pacotes!')">Pacotes Especiais</li>
+                    <li onclick="alert('Você clicou em Contato!')">Contato</li>
+                </ul>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <div class="barbie-button" onclick="alert('Reserva realizada com sucesso!')">RESERVAR AGORA</div>
+                    <div class="barbie-button" onclick="alert('Login realizado!')">LOGIN</div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <section class="hero" id="inicio">
+                    <h1 class="glitch" data-text="ARAKAKI AVENTURAS">ARAKAKI AVENTURAS</h1>
+                    <p>Experimente a emoção das águas cristalinas do Rio Manso em Cuiabá! Oferecemos as melhores experiências de aventura com segurança e diversão garantidas.</p>
+                    <div style="margin-top: 20px;">
+                        <button class="barbie-button" onclick="alert('Reserva realizada com sucesso!')">RESERVAR AGORA</button>
+                        <button class="barbie-button" onclick="alert('Ver mais informações!')">SAIBA MAIS</button>
+                    </div>
+                </section>
+                
+                <section class="barbie-style" id="sobre">
+                    <div class="barbie-title">SOBRE NÓS</div>
+                    <p>A Arakaki Aventuras foi fundada em 2005 por um grupo de entusiastas da natureza que desejavam compartilhar a beleza e a adrenalina do Rio Manso com todos os amantes de aventura. Com mais de 15 anos de experiência, somos referência em atividades aquáticas na região de Cuiabá.</p>
+                    <div class="barbie-image">Imagem do Rio Manso</div>
+                </section>
+                
+                <section class="features" id="servicos">
+                    <div class="feature-card">
+                        <h3>RAFTING EXTREMO</h3>
+                        <p>Descida emocionante pelas corredeiras do Rio Manso com equipamentos de última geração e guias experientes.</p>
+                        <button class="barbie-button">VER MAIS</button>
+                    </div>
+                    <div class="feature-card">
+                        <h3>KAYAK AVENTURA</h3>
+                        <p>Explore os pontos mais remotos do rio com nossos kayaks especiais para aventuras aquáticas.</p>
+                        <button class="barbie-button">VER MAIS</button>
+                    </div>
+                    <div class="feature-card">
+                        <h3>TRILHAS ECOLÓGICAS</h3>
+                        <p>Combine aventura na água com trilhas pela mata ciliar, observando a rica biodiversidade da região.</p>
+                        <button class="barbie-button">VER MAIS</button>
+                    </div>
+                </section>
+                
+                <section class="barbie-style" id="galeria">
+                    <div class="barbie-title">GALERIA DE FOTOS</div>
+                    <div class="gallery">
+                        <div class="gallery-item">Rafting</div>
+                        <div class="gallery-item">Kayak</div>
+                        <div class="gallery-item">Trilha</div>
+                        <div class="gallery-item">Pôr do Sol</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
 
-<section class="about-section">
-<h2>Sobre Nós</h2>
-<p>Na Arakaki, transformamos sua viagem em uma experiência inesquecível. Com guias experientes e equipamentos de última geração, oferecemos passeios seguros e divertidos no coração da natureza mato-grossense.</p>
-</section>
+    <footer>
+        <p>&copy; 2024 ARAKAKI AVENTURAS - Todos os direitos reservados</p>
+        <p>Rio Manso, Cuiabá - MT | (65) 99999-9999</p>
+    </footer>
 
-<footer class="footer">
-<p>&copy; 2025 Arakaki Aventura. Todos os direitos reservados.</p>
-</footer>
+    <script>
+        // Função para rolar para o topo
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
-<script src="script.js"></script>
+        // Animação de digitação para o título principal
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            const typing = setInterval(() => {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                }
+            }, 100);
+        });
+
+        // Menu de navegação suave
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Efeito de brilho ao passar o mouse
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.boxShadow = '0 0 20px #ff3399';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+            });
+        });
+
+        // Efeito de piscar nos botões
+        const barbieButtons = document.querySelectorAll('.barbie-button');
+        barbieButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.animation = 'pulse 0.5s infinite';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.animation = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
+```
