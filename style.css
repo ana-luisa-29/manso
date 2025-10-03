@@ -255,6 +255,7 @@ main {
 
 .gallery-item {
     height: 150px;
+    /* background-image: url(assets/Untitled.jpg); */
     background: linear-gradient(45deg, #ff66cc, #ff99cc);
     border: 3px solid #ff3399;
     border-radius: 10px;
@@ -267,6 +268,7 @@ main {
     padding: 10px;
     transition: all 0.3s ease;
 }
+
 
 .gallery-item:hover {
     transform: rotate(2deg) scale(1.05);
@@ -360,7 +362,8 @@ footer {
 .barbie-image {
     width: 100%;
     height: 200px;
-    background: #ff66cc;
+    background-image: url(assets/manso\ malai.jpg);
+    /* background: #ff66cc; */
     border: 3px solid #ff3399;
     border-radius: 10px;
     display: flex;
