@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Arakaki Aventuras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CORES E RESET ===== */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Bellefair', serif;
+            background-color: #2582EB; /* Azul sólido, sem imagem */
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 100px; /* Compensa o header fixo */
+        }
+
+        /* ===== HEADER FIXO (sem imagem) ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            border-bottom: 3px solid #ff3399;
+            padding: 15px 20px;
+            z-index: 1000;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+.img-logoh {
+    display: flex;
+    align-items: center;
+    max-width: 10px;
+    margin: 0 auto 0px;
+    justify-content: center;
+}
+
+        .logo-text {
+            font-family: 'Bellefair', serif;
+            font-size: 18px;
+            color: white;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 12px;
+            border: 3px solid #ff3399;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background: #ff3399;
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+        }
+
+        .btn-inicio {
+            background: #ff3399;
+            color: white;
+            border: 3px solid white;
+            padding: 8px 16px;
+            font-family: 'Bellefair', serif;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            text-shadow: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-inicio:hover {
+            background: #ff66cc;
+            transform: scale(1.05);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+        }
+
+        /* ===== LOGIN CONTAINER ===== */
+        .login-container {
+            background: linear-gradient(135deg, #ff66cc, #ff99cc);
+            border: 3px solid #ff3399;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+            margin: 40px auto;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .login-container h2 {
+            font-family: 'Bellefair', serif;
+            font-size: 20px;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-form input {
+            padding: 12px;
+            font-size: 16px;
+            border: 3px solid #ff3399;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-family: 'Bellefair', serif;
+            outline: none;
+        }
+
+        .login-form input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .login-form input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #ff66cc;
+        }
+
+        .login-btn {
+            background: #ff3399;
+            color: white;
+            border: 3px solid white;
+            padding: 12px;
+            font-family: 'Bellefair', serif;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            text-shadow: none;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: #ff66cc;
+            transform: scale(1.05);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+        }
+
+        .forgot-password {
+            margin-top: 12px;
+            background: none;
+            border: none;
+            color: white;
+            font-family: 'Bellefair', serif;
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #ff3399;
+            transform: scale(1.03);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Bellefair', serif;
+            font-weight: bold;
+            border: 2px solid #ff3399;
+            padding: 8px 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #ff3399;
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER SEM IMAGEM — APENAS TEXTO -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/logos-removebg-preview.png" alt="Logo">
+    </header>
+
+    <div class="img-logoh">
+        <img src="assets/Arakaki-30-09-2025.png" alt="logo">
+    </div>
+
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <div class="login-container">
+        <h2>LOGIN AVENTUREIRO</h2>
+        <form class="login-form" id="loginForm">
+            <input type="text" id="username" placeholder="Nome de usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit" class="login-btn">ENTRAR</button>
+            <button type="button" class="forgot-password" onclick="alert('Verifique seu e-mail para redefinir sua senha! 💌')">Esqueci a senha?</button>
+        </form>
+        <a href="index.html" class="back-link">← VOLTAR PARA O SITE</a>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === 'arakaki' && pass === 'aventura') {
+                alert('✅ Login bem-sucedido!\nBem-vindo, aventureiro!');
+                window.location.href = 'index.html';
+            } else {
+                alert('❌ Usuário ou senha incorretos.\nTente: usuário = "arakaki", senha = "aventura"');
+            }
+        });
+    </script>
+</body>
+</html>

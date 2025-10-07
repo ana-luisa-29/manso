@@ -110,6 +110,7 @@ nav a:hover {
     border-radius: 8px;
     text-shadow: none;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .btn-inicio:hover {
