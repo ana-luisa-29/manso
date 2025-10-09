@@ -59,3 +59,18 @@ barbieButtons.forEach(button => {
         button.style.animation = 'none';
     });
 });
+
+// Profile photo upload functionality
+const profilePhotoUpload = document.getElementById('profilePhotoUpload');
+const profilePhotoContainer = document.getElementById('profilePhotoContainer');
+
+profilePhotoUpload.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            profilePhotoContainer.innerHTML = `<img src="${e.target.result}" alt="Profile Photo">`;
+        }
+        reader.readAsDataURL(file);
+    }
+});
