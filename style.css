@@ -190,7 +190,7 @@ main {
 }
 
 .upload-btn:hover {
-    background: #ff66cc;
+    background: #3B75E9;
     transform: scale(1.05);
     box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
 }
@@ -405,7 +405,7 @@ footer {
 }
 
 .barbie-button:hover {
-    background: #ff66cc;
+    background: #3B75E9;
     color: #ffffff;
     transform: scale(1.05);
     box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
