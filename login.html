@@ -47,6 +47,29 @@ header {
     box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
     backdrop-filter: blur(5px);
 }
+
+/* ===== HEADER - BOTÃO EXTERNO ===== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.site-back-link {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Bellefair', serif;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s ease;
+}
+
+.site-back-link:hover {
+    color: var(--secondary-blue);
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -270,15 +293,21 @@ header {
 </head>
 <body>
 <!-- HEADER -->
+<!-- HEADER -->
 <header>
     <div class="header-container">
         <div class="logo-container">
             <div class="logo-circle">A</div>
             <div class="logo-text">Arakaki Aventuras</div>
         </div>
-        <button id="backBtn" class="back-btn" style="display: none; color: white; background: none; border: none; font-family: 'Bellefair', serif; cursor: pointer;">
-            <i class="fas fa-arrow-left"></i> Voltar
-        </button>
+        <div class="header-actions">
+            <button id="backBtn" class="back-btn" style="display: none; color: white; background: none; border: none; font-family: 'Bellefair', serif; cursor: pointer;">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+            <a href="index.html" class="site-back-link">
+                <i class="fas fa-arrow-left"></i> Voltar para o site
+            </a>
+        </div>
     </div>
 </header>
 
