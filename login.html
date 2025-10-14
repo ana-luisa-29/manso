@@ -124,6 +124,7 @@ header {
 
 .form-title {
     text-align: center;
+    color: var(--white);
     font-size: 28px;
     margin-bottom: 32px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -275,6 +276,12 @@ header {
     display: block;
 }
 
+.img-logoh{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* ===== RESPONSIVO ===== */
 @media (max-width: 480px) {
     .form-container {
@@ -311,12 +318,14 @@ header {
     </div>
 </header>
 
+
+
 <!-- CONTAINER PRINCIPAL -->
 <div class="container">
     <!-- LOGIN PAGE -->
     <div id="loginPage" class="page active">
         <div class="form-container">
-            <h2 class="form-title">LOGIN AVENTUREIRO</h2>
+            <h2 class="form-title">LOGIN</h2>
             <form id="loginForm">
                 <div class="form-group">
                     <i class="fas fa-envelope input-icon"></i>
@@ -330,6 +339,9 @@ header {
                     </button>
                 </div>
                 <button type="submit" class="submit-btn">ENTRAR</button>
+                <div class="img-logoh">
+                    <img src="assets/arakaki-removebg-preview.png" alt="">
+                </div>
                 <button type="button" class="forgot-password" id="forgotPasswordBtn">Esqueci a senha?</button>
             </form>
             <div class="form-footer">
@@ -366,6 +378,9 @@ header {
                 </button>
             </div>
             <button type="submit" class="submit-btn">CRIAR CONTA</button>
+            <div class="img-logoh">
+                <img src="assets/arakaki-removebg-preview.png" alt="">
+            </div>
         </form>
         <div class="form-footer">
             <p>Já tem uma conta? <button id="showLoginFromSignup">Faça login</button></p>
@@ -383,6 +398,9 @@ header {
                 <input type="email" id="forgotEmail" class="form-input" placeholder="seu@email.com" required>
             </div>
             <button type="submit" class="submit-btn">ENVIAR INSTRUÇÕES</button>
+            <div class="img-logoh">
+                <img src="assets/arakaki-removebg-preview.png" alt="">
+            </div>
         </form>
         <div class="form-footer">
             <p>Lembrou da senha? <button id="showLoginFromForgot">Voltar para login</button></p>
@@ -390,9 +408,6 @@ header {
     </div>
 </div>
 
-    <a href="index.html" class="back-link">
-        <i class="fas fa-arrow-left"></i> Voltar para o site
-    </a>
 </div>
 
 <script>

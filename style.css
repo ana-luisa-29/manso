@@ -144,6 +144,37 @@ main {
     min-height: 500px;
 }
 
+.audio-container {
+        width: 300px; /* Tamanho menor */
+    }
+
+    audio {
+        width: 50%;
+        height: 40px; /* Altura menor */
+        outline: none;
+    }
+
+    /* Estilização para navegadores WebKit (Chrome, Safari, Edge) */
+    audio::-webkit-media-controls-panel {
+        background-color: #ff69b4 !important; /* Cor rosa */
+        color: white !important;
+    }
+
+    audio::-webkit-media-controls-play-button,
+    audio::-webkit-media-controls-mute-button {
+        background-color: #ff69b4 !important;
+        color: white !important;
+    }
+
+    audio::-webkit-media-controls-timeline {
+        background-color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    audio::-webkit-media-controls-current-time-display,
+    audio::-webkit-media-controls-time-remaining-display {
+        color: white !important;
+}
+
 /* Profile photo section */
 .profile-section {
     text-align: center;
