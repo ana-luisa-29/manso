@@ -4,32 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Arakaki Aventuras</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== CORES E RESET ===== */
-        body {
+        /* ===== RESET E CORES ===== */
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Bellefair', serif;
-            background-color: #2582EB; /* Azul sólido, sem imagem */
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-top: 100px; /* Compensa o header fixo */
+            box-sizing: border-box;
         }
 
-        /* ===== HEADER FIXO (sem imagem) ===== */
+        :root {
+            --primary-pink: #ff3399;
+            --secondary-blue: #3B75E9;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Bellefair', serif;
+            background-image: url(assets/fundo.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* ===== HEADER ===== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(135deg, #ff66cc, #ff99cc);
-            border-bottom: 3px solid #ff3399;
+            background-color: var(--primary-pink);
+            border-bottom: 4px solid var(--white);
             padding: 15px 20px;
             z-index: 1000;
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .header-container {
@@ -40,222 +53,405 @@
             margin: 0 auto;
         }
 
-.img-logoh {
-    display: flex;
-    align-items: center;
-    max-width: 10px;
-    margin: 0 auto 0px;
-    justify-content: center;
-}
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--primary-pink);
+        }
 
         .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ===== CONTAINER PRINCIPAL ===== */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 32px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* ===== FORMULÁRIOS ===== */
+        .form-group {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--white);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: 'Bellefair', serif;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-input:focus {
+            background: #ff3399;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 3px rgba(255, 51, 153, 0.3);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 20px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-pink);
+            color: var(--white);
+            border: 2px solid var(--white);
+            border-radius: 8px;
             font-family: 'Bellefair', serif;
             font-size: 18px;
-            color: white;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 15px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
             font-weight: bold;
-            padding: 8px 12px;
-            border: 3px solid #ff3399;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            cursor: pointer;
             transition: all 0.3s ease;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
-            font-size: 14px;
+            margin-top: 8px;
         }
 
-        nav a:hover {
-            background: #3B75E9;
+        .submit-btn:hover {
+            background-color: #3B75E9;
             transform: translateY(-2px);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
-        }
-
-        .btn-inicio {
-            background: #ff3399;
-            color: white;
-            border: 3px solid white;
-            padding: 8px 16px;
-            font-family: 'Bellefair', serif;
-            font-size: 12px;
-            cursor: pointer;
-            border-radius: 8px;
-            text-shadow: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-inicio:hover {
-            background: #3B75E9;
-            transform: scale(1.05);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
-        }
-
-        /* ===== LOGIN CONTAINER ===== */
-        .login-container {
-            background: linear-gradient(135deg, #ff66cc, #ff99cc);
-            border: 3px solid #ff3399;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
-            max-width: 400px;
-            width: 90%;
-            margin: 40px auto;
-            text-align: center;
-            animation: fadeInUp 1s ease;
-        }
-
-        .login-container h2 {
-            font-family: 'Bellefair', serif;
-            font-size: 20px;
-            color: white;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
-        }
-
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .login-form input {
-            padding: 12px;
-            font-size: 16px;
-            border: 3px solid #ff3399;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-family: 'Bellefair', serif;
-            outline: none;
-        }
-
-        .login-form input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .login-form input:focus {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: #ff66cc;
-        }
-
-        .login-btn {
-            background: #ff3399;
-            color: white;
-            border: 3px solid white;
-            padding: 12px;
-            font-family: 'Bellefair', serif;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 8px;
-            text-shadow: none;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .login-btn:hover {
-            background: #3B75E9;
-            transform: scale(1.05);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .forgot-password {
-            margin-top: 12px;
+            display: block;
+            width: 100%;
+            text-align: center;
             background: none;
             border: none;
-            color: white;
+            color: var(--white);
             font-family: 'Bellefair', serif;
-            font-size: 14px;
+            font-size: 16px;
             text-decoration: underline;
             cursor: pointer;
-            transition: all 0.3s ease;
+            margin-top: 16px;
+            padding: 8px 0;
+            transition: color 0.3s ease;
         }
 
         .forgot-password:hover {
-            color: #3B75E9;
-            transform: scale(1.03);
+            color: var(--secondary-blue);
         }
 
+        .form-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 16px;
+        }
+
+        .form-footer a,
+        .form-footer button {
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Bellefair', serif;
+            transition: color 0.3s ease;
+        }
+
+        .form-footer a:hover,
+        .form-footer button:hover {
+            color: var(--secondary-blue);
+            text-decoration: underline;
+        }
+
+        /* ===== BOTÃO VOLTAR ===== */
         .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--primary-pink);
             text-decoration: none;
             font-family: 'Bellefair', serif;
             font-weight: bold;
-            border: 2px solid #ff3399;
-            padding: 8px 15px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            margin-top: 24px;
+            transition: color 0.3s ease;
         }
 
         .back-link:hover {
-            background: #3B75E9;
-            transform: translateY(-2px);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            color: var(--secondary-blue);
         }
 
-        /* ===== ANIMAÇÕES ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* ===== PÁGINAS ===== */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 30px 20px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .form-title {
+                font-size: 24px;
+            }
+            
+            .header-container {
+                padding: 0 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER SEM IMAGEM — APENAS TEXTO -->
+    <!-- HEADER -->
     <header>
         <div class="header-container">
-            <div class="logo">
-                <img src="assets/logos-removebg-preview.png" alt="Logo">
+            <div class="logo-container">
+                <div class="logo-circle">A</div>
+                <div class="logo-text">Arakaki Aventuras</div>
+            </div>
+            <button id="backBtn" class="back-btn" style="display: none; color: white; background: none; border: none; font-family: 'Bellefair', serif; cursor: pointer;">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+        </div>
     </header>
 
-    <div class="img-logoh">
-        <img src="assets/Arakaki-30-09-2025.png" alt="logo">
-    </div>
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container">
+        <!-- LOGIN PAGE -->
+        <div id="loginPage" class="page active">
+            <div class="form-container">
+                <h2 class="form-title">LOGIN AVENTUREIRO</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="loginEmail" class="form-input" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" id="toggleLoginPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <button type="submit" class="submit-btn">ENTRAR</button>
+                    <button type="button" class="forgot-password" id="forgotPasswordBtn">Esqueci a senha?</button>
+                </form>
+                <div class="form-footer">
+                    <p>Não tem uma conta? <button id="showSignup">Cadastre-se</button></p>
+                </div>
+            </div>
+        </div>
 
+        <!-- SIGNUP PAGE -->
+        <div id="signupPage" class="page">
+            <div class="form-container">
+                <h2 class="form-title">CRIAR CONTA</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="signupUsername" class="form-input" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="signupEmail" class="form-input" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="signupPassword" class="form-input" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" id="toggleSignupPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="signupConfirmPassword" class="form-input" placeholder="Confirmar senha" required>
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <button type="submit" class="submit-btn">CRIAR CONTA</button>
+                </form>
+                <div class="form-footer">
+                    <p>Já tem uma conta? <button id="showLoginFromSignup">Faça login</button></p>
+                </div>
+            </div>
+        </div>
 
-    <!-- FORMULÁRIO DE LOGIN -->
-    <div class="login-container">
-        <h2>LOGIN AVENTUREIRO</h2>
-        <form class="login-form" id="loginForm">
-            <input type="text" id="username" placeholder="Nome de usuário" required>
-            <input type="password" id="password" placeholder="Senha" required>
-            <button type="submit" class="login-btn">ENTRAR</button>
-            <button type="button" class="forgot-password" onclick="alert('Verifique seu e-mail para redefinir sua senha! 💌')">Esqueci a senha?</button>
-        </form>
-        <a href="index.html" class="back-link">← VOLTAR PARA O SITE</a>
+        <!-- FORGOT PASSWORD PAGE -->
+        <div id="forgotPage" class="page">
+            <div class="form-container">
+                <h2 class="form-title">RECUPERAR SENHA</h2>
+                <form id="forgotForm">
+                    <div class="form-group">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="forgotEmail" class="form-input" placeholder="seu@email.com" required>
+                    </div>
+                    <button type="submit" class="submit-btn">ENVIAR INSTRUÇÕES</button>
+                </form>
+                <div class="form-footer">
+                    <p>Lembrou da senha? <button id="showLoginFromForgot">Voltar para login</button></p>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Voltar para o site
+        </a>
     </div>
 
     <script>
+        // Toggle password visibility
+        document.getElementById('toggleLoginPassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('loginPassword');
+            const icon = this.querySelector('i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        });
+
+        document.getElementById('toggleSignupPassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('signupPassword');
+            const icon = this.querySelector('i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        });
+
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('signupConfirmPassword');
+            const icon = this.querySelector('i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        });
+
+        // Page navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            const backBtn = document.getElementById('backBtn');
+            if (pageId === 'loginPage') {
+                backBtn.style.display = 'none';
+            } else {
+                backBtn.style.display = 'block';
+            }
+        }
+
+        document.getElementById('showSignup').addEventListener('click', () => showPage('signupPage'));
+        document.getElementById('showLoginFromSignup').addEventListener('click', () => showPage('loginPage'));
+        document.getElementById('forgotPasswordBtn').addEventListener('click', () => showPage('forgotPage'));
+        document.getElementById('showLoginFromForgot').addEventListener('click', () => showPage('loginPage'));
+        document.getElementById('backBtn').addEventListener('click', () => showPage('loginPage'));
+
+        // Form submissions
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-
-            if (user === 'arakaki' && pass === 'aventura') {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email === 'arakaki@aventuras.com' && password === 'aventura') {
                 alert('✅ Login bem-sucedido!\nBem-vindo, aventureiro!');
-                window.location.href = 'index.html';
             } else {
-                alert('❌ Usuário ou senha incorretos.\nTente: usuário = "arakaki", senha = "aventura"');
+                alert('❌ Credenciais incorretas.\nTente: email = "arakaki@aventuras.com", senha = "aventura"');
             }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('❌ As senhas não coincidem!');
+                return;
+            }
+            
+            alert('✅ Conta criada com sucesso!\nBem-vindo ao Arakaki Aventuras!');
+            showPage('loginPage');
+        });
+
+        document.getElementById('forgotForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('💌 Verifique seu e-mail para redefinir sua senha!');
+            showPage('loginPage');
         });
     </script>
 </body>

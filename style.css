@@ -306,7 +306,8 @@ main {
 }
 
 .gallery-item {
-    height: 150px;
+    height: 158px;
+    width: 280px;
     /* background-image: url(assets/Untitled.jpg); */
     background: linear-gradient(45deg, #ff66cc, #ff99cc);
     border: 3px solid #ff3399;
@@ -317,7 +318,7 @@ main {
     font-weight: bold;
     font-size: 14px;
     text-align: center;
-    padding: 10px;
+    /* padding: 10px; */
     transition: all 0.3s ease;
 }
 
@@ -325,6 +326,11 @@ main {
 .gallery-item:hover {
     transform: rotate(2deg) scale(1.05);
     box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+}
+
+.gallery-item img{
+    border-radius: 5%;
+    
 }
 
 footer {
@@ -414,7 +420,7 @@ footer {
 .barbie-image {
     width: 100%;
     height: 200px;
-    background-image: url(assets/manso\ malai.jpg);
+    background-image: url(assets/certa.jpg);
     /* background: #ff66cc; */
     border: 3px solid #ff3399;
     border-radius: 10px;
