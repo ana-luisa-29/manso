@@ -7,452 +7,458 @@
     <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== RESET E CORES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* ===== RESET E CORES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        :root {
-            --primary-pink: #ff3399;
-            --secondary-blue: #3B75E9;
-            --white: #ffffff;
-        }
+:root {
+    --pink2: #FF6BCC;
+    --pink: #FF89CC;
+    --primary-pink: #ff3399;
+    --secondary-blue: #3B75E9;
+    --white: #ffffff;
+}
 
-        body {
-            font-family: 'Bellefair', serif;
-            background-image: url(assets/fundo.jpg);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            line-height: 1.6;
-            min-height: 100vh;
-            padding-top: 80px;
-        }
+body {
+    font-family: 'Bellefair', serif;
+    background-image: url(assets/fundo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-top: 80px;
+}
 
-        /* ===== HEADER ===== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary-pink);
-            border-bottom: 4px solid var(--white);
-            padding: 15px 20px;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+/* ===== HEADER ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #ff66cc, #ff99cc);
+    border-bottom: 3px solid #ff3399;
+    padding: 15px 20px;
+    z-index: 1000;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--primary-pink);
+}
 
-        .logo-circle {
-            width: 40px;
-            height: 40px;
-            background-color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-            color: var(--primary-pink);
-        }
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+}
 
-        .logo-text {
-            font-size: 20px;
-            font-weight: bold;
-        }
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+}
 
-        /* ===== CONTAINER PRINCIPAL ===== */
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 80px);
-            padding: 20px;
-        }
+.form-container {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
 
-        .form-container {
-            width: 100%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--white);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
+.form-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 32px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
 
-        .form-title {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 32px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
+/* ===== FORMULÁRIOS ===== */
+.form-group {
+    position: relative;
+    margin-bottom: 24px;
+}
 
-        /* ===== FORMULÁRIOS ===== */
-        .form-group {
-            position: relative;
-            margin-bottom: 24px;
-        }
+.form-input {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--white);
+    border-radius: 8px;
+    color: var(--pink2);
+    font-family: 'Bellefair', serif;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
 
-        .form-input {
-            width: 100%;
-            padding: 14px 16px 14px 48px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid var(--white);
-            border-radius: 8px;
-            color: var(--white);
-            font-family: 'Bellefair', serif;
-            font-size: 16px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
 
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
+.form-input:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
 
-        .form-input:focus {
-            background: #ff3399;
-            border-color: var(--primary-pink);
-            box-shadow: 0 0 0 3px rgba(255, 51, 153, 0.3);
-        }
+.form-input:focus {
+    background: #ff3399;
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 3px rgba(255, 51, 153, 0.3);
+}
 
-        .input-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--white);
-            font-size: 20px;
-        }
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--white);
+    font-size: 20px;
+}
 
-        .toggle-password {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--white);
-            cursor: pointer;
-            font-size: 18px;
-        }
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 18px;
+}
 
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--primary-pink);
-            color: var(--white);
-            border: 2px solid var(--white);
-            border-radius: 8px;
-            font-family: 'Bellefair', serif;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 8px;
-        }
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 8px;
+    font-family: 'Bellefair', serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
 
-        .submit-btn:hover {
-            background-color: #3B75E9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+.submit-btn:hover {
+    background-color: #3B75E9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
-        .forgot-password {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-family: 'Bellefair', serif;
-            font-size: 16px;
-            text-decoration: underline;
-            cursor: pointer;
-            margin-top: 16px;
-            padding: 8px 0;
-            transition: color 0.3s ease;
-        }
+.forgot-password {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: 'Bellefair', serif;
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 16px;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
 
-        .forgot-password:hover {
-            color: var(--secondary-blue);
-        }
+.forgot-password:hover {
+    color: var(--secondary-blue);
+}
 
-        .form-footer {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 16px;
-        }
+.form-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 16px;
+}
 
-        .form-footer a,
-        .form-footer button {
-            color: var(--primary-pink);
-            text-decoration: none;
-            font-weight: bold;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: 'Bellefair', serif;
-            transition: color 0.3s ease;
-        }
+.form-footer a,
+.form-footer button {
+    color: var(--primary-pink);
+    text-decoration: none;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Bellefair', serif;
+    transition: color 0.3s ease;
+}
 
-        .form-footer a:hover,
-        .form-footer button:hover {
-            color: var(--secondary-blue);
-            text-decoration: underline;
-        }
+.form-footer a:hover,
+.form-footer button:hover {
+    color: var(--secondary-blue);
+    text-decoration: underline;
+}
 
-        /* ===== BOTÃO VOLTAR ===== */
-        .back-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: var(--primary-pink);
-            text-decoration: none;
-            font-family: 'Bellefair', serif;
-            font-weight: bold;
-            margin-top: 24px;
-            transition: color 0.3s ease;
-        }
+/* ===== BOTÃO VOLTAR ===== */
+.back-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--primary-pink);
+    text-decoration: none;
+    font-family: 'Bellefair', serif;
+    font-weight: bold;
+    margin-top: 24px;
+    transition: color 0.3s ease;
+}
 
-        .back-link:hover {
-            color: var(--secondary-blue);
-        }
+.back-link:hover {
+    color: var(--secondary-blue);
+}
 
-        /* ===== PÁGINAS ===== */
-        .page {
-            display: none;
-        }
+/* ===== PÁGINAS ===== */
+.page {
+    display: none;
+}
 
-        .page.active {
-            display: block;
-        }
+.page.active {
+    display: block;
+}
 
-        /* ===== RESPONSIVO ===== */
-        @media (max-width: 480px) {
-            .form-container {
-                padding: 30px 20px;
-            }
-            
-            .form-title {
-                font-size: 24px;
-            }
-            
-            .header-container {
-                padding: 0 15px;
-            }
-        }
-    </style>
+/* ===== RESPONSIVO ===== */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 30px 20px;
+    }
+    
+    .form-title {
+        font-size: 24px;
+    }
+    
+    .header-container {
+        padding: 0 15px;
+    }
+}
+</style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <div class="logo-circle">A</div>
-                <div class="logo-text">Arakaki Aventuras</div>
-            </div>
-            <button id="backBtn" class="back-btn" style="display: none; color: white; background: none; border: none; font-family: 'Bellefair', serif; cursor: pointer;">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </button>
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <div class="logo-container">
+            <div class="logo-circle">A</div>
+            <div class="logo-text">Arakaki Aventuras</div>
         </div>
-    </header>
+        <button id="backBtn" class="back-btn" style="display: none; color: white; background: none; border: none; font-family: 'Bellefair', serif; cursor: pointer;">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+    </div>
+</header>
 
-    <!-- CONTAINER PRINCIPAL -->
-    <div class="container">
-        <!-- LOGIN PAGE -->
-        <div id="loginPage" class="page active">
-            <div class="form-container">
-                <h2 class="form-title">LOGIN AVENTUREIRO</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="loginEmail" class="form-input" placeholder="seu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-lock input-icon"></i>
-                        <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
-                        <button type="button" class="toggle-password" id="toggleLoginPassword">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <button type="submit" class="submit-btn">ENTRAR</button>
-                    <button type="button" class="forgot-password" id="forgotPasswordBtn">Esqueci a senha?</button>
-                </form>
-                <div class="form-footer">
-                    <p>Não tem uma conta? <button id="showSignup">Cadastre-se</button></p>
+<!-- CONTAINER PRINCIPAL -->
+<div class="container">
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="page active">
+        <div class="form-container">
+            <h2 class="form-title">LOGIN AVENTUREIRO</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="seu@email.com" required>
                 </div>
-            </div>
-        </div>
-
-        <!-- SIGNUP PAGE -->
-        <div id="signupPage" class="page">
-            <div class="form-container">
-                <h2 class="form-title">CRIAR CONTA</h2>
-                <form id="signupForm">
-                    <div class="form-group">
-                        <i class="fas fa-user input-icon"></i>
-                        <input type="text" id="signupUsername" class="form-input" placeholder="Seu nome" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="signupEmail" class="form-input" placeholder="seu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-lock input-icon"></i>
-                        <input type="password" id="signupPassword" class="form-input" placeholder="••••••••" required>
-                        <button type="button" class="toggle-password" id="toggleSignupPassword">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-lock input-icon"></i>
-                        <input type="password" id="signupConfirmPassword" class="form-input" placeholder="Confirmar senha" required>
-                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <button type="submit" class="submit-btn">CRIAR CONTA</button>
-                </form>
-                <div class="form-footer">
-                    <p>Já tem uma conta? <button id="showLoginFromSignup">Faça login</button></p>
+                <div class="form-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                    <button type="button" class="toggle-password" id="toggleLoginPassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
                 </div>
+                <button type="submit" class="submit-btn">ENTRAR</button>
+                <button type="button" class="forgot-password" id="forgotPasswordBtn">Esqueci a senha?</button>
+            </form>
+            <div class="form-footer">
+                <p>Não tem uma conta? <button id="showSignup">Cadastre-se</button></p>
             </div>
         </div>
-
-        <!-- FORGOT PASSWORD PAGE -->
-        <div id="forgotPage" class="page">
-            <div class="form-container">
-                <h2 class="form-title">RECUPERAR SENHA</h2>
-                <form id="forgotForm">
-                    <div class="form-group">
-                        <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="forgotEmail" class="form-input" placeholder="seu@email.com" required>
-                    </div>
-                    <button type="submit" class="submit-btn">ENVIAR INSTRUÇÕES</button>
-                </form>
-                <div class="form-footer">
-                    <p>Lembrou da senha? <button id="showLoginFromForgot">Voltar para login</button></p>
-                </div>
-            </div>
-        </div>
-
-        <a href="index.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Voltar para o site
-        </a>
     </div>
 
-    <script>
-        // Toggle password visibility
-        document.getElementById('toggleLoginPassword').addEventListener('click', function() {
-            const passwordInput = document.getElementById('loginPassword');
-            const icon = this.querySelector('i');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.className = 'fas fa-eye-slash';
-            } else {
-                passwordInput.type = 'password';
-                icon.className = 'fas fa-eye';
-            }
-        });
+<!-- SIGNUP PAGE -->
+<div id="signupPage" class="page">
+    <div class="form-container">
+        <h2 class="form-title">CRIAR CONTA</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="signupUsername" class="form-input" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="signupEmail" class="form-input" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="signupPassword" class="form-input" placeholder="••••••••" required>
+                <button type="button" class="toggle-password" id="toggleSignupPassword">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="signupConfirmPassword" class="form-input" placeholder="Confirmar senha" required>
+                <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <button type="submit" class="submit-btn">CRIAR CONTA</button>
+        </form>
+        <div class="form-footer">
+            <p>Já tem uma conta? <button id="showLoginFromSignup">Faça login</button></p>
+        </div>
+    </div>
+</div>
 
-        document.getElementById('toggleSignupPassword').addEventListener('click', function() {
-            const passwordInput = document.getElementById('signupPassword');
-            const icon = this.querySelector('i');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.className = 'fas fa-eye-slash';
-            } else {
-                passwordInput.type = 'password';
-                icon.className = 'fas fa-eye';
-            }
-        });
+<!-- FORGOT PASSWORD PAGE -->
+<div id="forgotPage" class="page">
+    <div class="form-container">
+        <h2 class="form-title">RECUPERAR SENHA</h2>
+        <form id="forgotForm">
+            <div class="form-group">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="forgotEmail" class="form-input" placeholder="seu@email.com" required>
+            </div>
+            <button type="submit" class="submit-btn">ENVIAR INSTRUÇÕES</button>
+        </form>
+        <div class="form-footer">
+            <p>Lembrou da senha? <button id="showLoginFromForgot">Voltar para login</button></p>
+        </div>
+    </div>
+</div>
 
-        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
-            const passwordInput = document.getElementById('signupConfirmPassword');
-            const icon = this.querySelector('i');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.className = 'fas fa-eye-slash';
-            } else {
-                passwordInput.type = 'password';
-                icon.className = 'fas fa-eye';
-            }
-        });
+    <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Voltar para o site
+    </a>
+</div>
 
-        // Page navigation
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            
-            const backBtn = document.getElementById('backBtn');
-            if (pageId === 'loginPage') {
-                backBtn.style.display = 'none';
-            } else {
-                backBtn.style.display = 'block';
-            }
-        }
+<script>
+// Toggle password visibility
+document.getElementById('toggleLoginPassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('loginPassword');
+    const icon = this.querySelector('i');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+    } else {
+        passwordInput.type = 'password';
+        icon.className = 'fas fa-eye';
+    }
+});
 
-        document.getElementById('showSignup').addEventListener('click', () => showPage('signupPage'));
-        document.getElementById('showLoginFromSignup').addEventListener('click', () => showPage('loginPage'));
-        document.getElementById('forgotPasswordBtn').addEventListener('click', () => showPage('forgotPage'));
-        document.getElementById('showLoginFromForgot').addEventListener('click', () => showPage('loginPage'));
-        document.getElementById('backBtn').addEventListener('click', () => showPage('loginPage'));
+document.getElementById('toggleSignupPassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('signupPassword');
+    const icon = this.querySelector('i');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+    } else {
+        passwordInput.type = 'password';
+        icon.className = 'fas fa-eye';
+    }
+});
 
-        // Form submissions
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (email === 'arakaki@aventuras.com' && password === 'aventura') {
-                alert('✅ Login bem-sucedido!\nBem-vindo, aventureiro!');
-            } else {
-                alert('❌ Credenciais incorretas.\nTente: email = "arakaki@aventuras.com", senha = "aventura"');
-            }
-        });
+document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('signupConfirmPassword');
+    const icon = this.querySelector('i');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+    } else {
+        passwordInput.type = 'password';
+        icon.className = 'fas fa-eye';
+    }
+});
 
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('signupUsername').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('signupConfirmPassword').value;
-            
-            if (password !== confirmPassword) {
-                alert('❌ As senhas não coincidem!');
-                return;
-            }
-            
-            alert('✅ Conta criada com sucesso!\nBem-vindo ao Arakaki Aventuras!');
-            showPage('loginPage');
-        });
+// Page navigation
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.getElementById(pageId).classList.add('active');
+    
+    const backBtn = document.getElementById('backBtn');
+    if (pageId === 'loginPage') {
+        backBtn.style.display = 'none';
+    } else {
+        backBtn.style.display = 'block';
+    }
+}
 
-        document.getElementById('forgotForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('💌 Verifique seu e-mail para redefinir sua senha!');
-            showPage('loginPage');
-        });
-    </script>
+document.getElementById('showSignup').addEventListener('click', () => showPage('signupPage'));
+document.getElementById('showLoginFromSignup').addEventListener('click', () => showPage('loginPage'));
+document.getElementById('forgotPasswordBtn').addEventListener('click', () => showPage('forgotPage'));
+document.getElementById('showLoginFromForgot').addEventListener('click', () => showPage('loginPage'));
+document.getElementById('backBtn').addEventListener('click', () => showPage('loginPage'));
+
+// Form submissions
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    if (email === 'arakaki@aventuras.com' && password === 'aventura') {
+        alert('✅ Login bem-sucedido!\nBem-vindo, aventureiro!');
+    } else {
+        alert('❌ Credenciais incorretas.\nTente: email = "arakaki@aventuras.com", senha = "aventura"');
+    }
+});
+
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('signupUsername').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('signupConfirmPassword').value;
+    
+    if (password !== confirmPassword) {
+        alert('❌ As senhas não coincidem!');
+        return;
+    }
+    
+    alert('✅ Conta criada com sucesso!\nBem-vindo ao Arakaki Aventuras!');
+    showPage('loginPage');
+});
+
+document.getElementById('forgotForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('💌 Verifique seu e-mail para redefinir sua senha!');
+    showPage('loginPage');
+});
+</script>
 </body>
 </html>
