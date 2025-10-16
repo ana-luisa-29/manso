@@ -149,8 +149,8 @@ main {
     }
 
     audio {
-        width: 50%;
-        height: 40px; /* Altura menor */
+        width: 40%;
+        height: 50px; /* Altura menor */
         outline: none;
     }
 
@@ -463,6 +463,27 @@ footer {
     text-align: center;
     padding: 10px;
     margin: 10px 0;
+}
+
+.barbie-button2 {
+    background: #F76CB7;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-family: 'Bellefair', serif;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-shadow: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 5px;
+}
+
+.barbie-button2:hover {
+    background: #3B75E9;
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 768px) {
