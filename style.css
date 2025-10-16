@@ -100,10 +100,11 @@ nav a:hover {
 }
 
 .btn-inicio {
-    background: #ff3399;
+    font-weight: bold;
+    padding: 8px 15px;
+    background: #FF83D1;
     color: #ffffff;
-    border: 3px solid #ffffff;
-    padding: 10px 20px;
+    border: 3px solid #ff3399;
     font-family: 'Bellefair', serif;
     font-size: 14px;
     cursor: pointer;
@@ -111,6 +112,8 @@ nav a:hover {
     text-shadow: none;
     transition: all 0.3s ease;
     text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
 }
 
 .btn-inicio:hover {
