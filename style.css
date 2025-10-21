@@ -152,20 +152,20 @@ main {
     }
 
     audio {
-        width: 40%;
+        width: 100%;
         height: 50px; /* Altura menor */
         outline: none;
     }
 
     /* Estilização para navegadores WebKit (Chrome, Safari, Edge) */
     audio::-webkit-media-controls-panel {
-        background-color: #ff69b4 !important; /* Cor rosa */
+        background-color: #FF87CC !important; /* Cor rosa */
         color: white !important;
     }
 
     audio::-webkit-media-controls-play-button,
     audio::-webkit-media-controls-mute-button {
-        background-color: #ff69b4 !important;
+        background-color: #FF87CC !important;
         color: white !important;
     }
 
