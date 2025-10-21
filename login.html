@@ -280,6 +280,28 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 20px 0;
+}
+
+.img-logoh img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== VALIDAÇÃO DE SENHA ===== */
+.password-requirements {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+    padding-left: 48px;
+}
+
+.password-requirements.valid {
+    color: #4CAF50;
+}
+
+.password-requirements.invalid {
+    color: #f44336;
 }
 
 /* ===== RESPONSIVO ===== */
@@ -300,7 +322,6 @@ header {
 </head>
 <body>
 <!-- HEADER -->
-<!-- HEADER -->
 <header>
     <div class="header-container">
         <div class="logo-container">
@@ -317,8 +338,6 @@ header {
         </div>
     </div>
 </header>
-
-
 
 <!-- CONTAINER PRINCIPAL -->
 <div class="container">
@@ -340,7 +359,7 @@ header {
                 </div>
                 <button type="submit" class="submit-btn">ENTRAR</button>
                 <div class="img-logoh">
-                    <img src="assets/arakaki-removebg-preview.png" alt="">
+                    <img src="assets/arakaki-removebg-preview.png" alt="Logo Arakaki Aventuras">
                 </div>
                 <button type="button" class="forgot-password" id="forgotPasswordBtn">Esqueci a senha?</button>
             </form>
@@ -370,6 +389,9 @@ header {
                     <i class="fas fa-eye"></i>
                 </button>
             </div>
+            <div class="password-requirements" id="passwordRequirements">
+                A senha deve ter pelo menos 6 caracteres
+            </div>
             <div class="form-group">
                 <i class="fas fa-lock input-icon"></i>
                 <input type="password" id="signupConfirmPassword" class="form-input" placeholder="Confirmar senha" required>
@@ -379,7 +401,7 @@ header {
             </div>
             <button type="submit" class="submit-btn">CRIAR CONTA</button>
             <div class="img-logoh">
-                <img src="assets/arakaki-removebg-preview.png" alt="">
+                <img src="assets/arakaki-removebg-preview.png" alt="Logo Arakaki Aventuras">
             </div>
         </form>
         <div class="form-footer">
@@ -399,7 +421,7 @@ header {
             </div>
             <button type="submit" class="submit-btn">ENVIAR INSTRUÇÕES</button>
             <div class="img-logoh">
-                <img src="assets/arakaki-removebg-preview.png" alt="">
+                <img src="assets/arakaki-removebg-preview.png" alt="Logo Arakaki Aventuras">
             </div>
         </form>
         <div class="form-footer">
@@ -407,10 +429,23 @@ header {
         </div>
     </div>
 </div>
-
 </div>
 
 <script>
+// Armazenamento de usuários (em memória - para demonstração)
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
+// Função para salvar usuários no localStorage
+function saveUsers() {
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+// Função para redirecionar para o site principal
+function redirectToSite() {
+    // Redireciona para a página principal do site
+    window.location.href = 'index.html';
+}
+
 // Toggle password visibility
 document.getElementById('toggleLoginPassword').addEventListener('click', function() {
     const passwordInput = document.getElementById('loginPassword');
@@ -448,6 +483,20 @@ document.getElementById('toggleConfirmPassword').addEventListener('click', funct
     }
 });
 
+// Validação de senha em tempo real
+document.getElementById('signupPassword').addEventListener('input', function() {
+    const password = this.value;
+    const requirements = document.getElementById('passwordRequirements');
+    
+    if (password.length >= 6) {
+        requirements.textContent = 'Senha válida ✓';
+        requirements.className = 'password-requirements valid';
+    } else {
+        requirements.textContent = 'A senha deve ter pelo menos 6 caracteres';
+        requirements.className = 'password-requirements invalid';
+    }
+});
+
 // Page navigation
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
@@ -475,10 +524,15 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     
-    if (email === 'arakaki@aventuras.com' && password === 'aventura') {
-        alert('✅ Login bem-sucedido!\nBem-vindo, aventureiro!');
+    // Verifica se o usuário existe
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    if (user) {
+        alert(`✅ Login bem-sucedido!\nBem-vindo, ${user.username}!`);
+        // Redireciona para o site principal após 1 segundo
+        setTimeout(redirectToSite, 1000);
     } else {
-        alert('❌ Credenciais incorretas.\nTente: email = "arakaki@aventuras.com", senha = "aventura"');
+        alert('❌ Credenciais incorretas.\nVerifique seu e-mail e senha.');
     }
 });
 
@@ -489,18 +543,52 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     const password = document.getElementById('signupPassword').value;
     const confirmPassword = document.getElementById('signupConfirmPassword').value;
     
+    // Validação de senha mínima
+    if (password.length < 6) {
+        alert('❌ A senha deve ter pelo menos 6 caracteres!');
+        return;
+    }
+    
+    // Verifica se o e-mail já está cadastrado
+    if (users.some(u => u.email === email)) {
+        alert('❌ Este e-mail já está cadastrado!');
+        return;
+    }
+    
     if (password !== confirmPassword) {
         alert('❌ As senhas não coincidem!');
         return;
     }
     
+    // Cria novo usuário
+    users.push({ username, email, password });
+    saveUsers();
+    
     alert('✅ Conta criada com sucesso!\nBem-vindo ao Arakaki Aventuras!');
-    showPage('loginPage');
+    // Redireciona para o site principal após 1 segundo
+    setTimeout(redirectToSite, 1000);
+    
+    // Limpa o formulário
+    this.reset();
+    // Reseta a mensagem de validação
+    document.getElementById('passwordRequirements').textContent = 'A senha deve ter pelo menos 6 caracteres';
+    document.getElementById('passwordRequirements').className = 'password-requirements';
 });
 
 document.getElementById('forgotForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('💌 Verifique seu e-mail para redefinir sua senha!');
+    const email = document.getElementById('forgotEmail').value;
+    
+    // Verifica se o e-mail existe
+    const user = users.find(u => u.email === email);
+    
+    if (user) {
+        alert('💌 Verifique seu e-mail para redefinir sua senha!');
+        // Em um sistema real, aqui você enviaria um e-mail com link de recuperação
+    } else {
+        alert('❌ Este e-mail não está cadastrado em nosso sistema.');
+    }
+    
     showPage('loginPage');
 });
 </script>
