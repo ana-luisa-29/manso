@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -133,6 +134,28 @@ header {
     font-weight: bold;
 }
 
+/* ===== LOGIN SECTION ===== */
+.login-section {
+    background-color: var(--primary-pink);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 2px solid var(--white);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-title {
+    text-align: center;
+    color: var(--white);
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-family: 'Marcellus', serif;
+    font-weight: bold;
+}
+
 /* ===== ADVENTURE CARDS CONTAINER ===== */
 .adventures-container {
     display: flex;
@@ -165,7 +188,7 @@ header {
 }
 
 .adventure-description {
-    font-family: 'Marcelus', serif;
+    font-family: 'Marcellus', serif;
     font-size: 14px;
     color: var(--white);
     margin-bottom: 15px;
@@ -174,7 +197,7 @@ header {
 }
 
 .adventure-price {
-    font-family: 'Marcelus', serif;
+    font-family: 'Marcellus', serif;
     font-size: 18px;
     font-weight: bold;
     color: var(--white);
@@ -182,7 +205,7 @@ header {
 }
 
 .quantity-selector {
-    font-family: 'Marcelus', serif;
+    font-family: 'Marcellus', serif;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -209,6 +232,11 @@ header {
     color: var(--white);
 }
 
+.quantity-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .quantity-input {
     width: 50px;
     height: 30px;
@@ -217,12 +245,12 @@ header {
     border-radius: 6px;
     color: var(--blue);
     text-align: center;
-    font-family: 'Marcelus', serif;
+    font-family: 'Marcellus', serif;
     font-weight: bold;
 }
 
 .total-section {
-    font-family: 'Marcelus', serif;
+    font-family: 'Marcellus', serif;
     background-color: var(--primary-pink);
     padding: 15px;
     border-radius: 10px;
@@ -241,7 +269,7 @@ header {
 }
 
 .total-amount {
-    font-family: 'Marcelus', serif;
+    font-family: 'Marcellus', serif;
     font-size: 24px;
     font-weight: bold;
     color: var(--white);
@@ -318,6 +346,19 @@ header {
     margin: 20px 0;
 }
 
+/* Hidden purchase form when not logged in */
+#purchaseForm {
+    display: none;
+}
+
+.logged-in #purchaseForm {
+    display: block;
+}
+
+.logged-in .login-section {
+    display: none;
+}
+
 /* ===== RESPONSIVO ===== */
 @media (max-width: 992px) {
     .adventure-card {
@@ -369,14 +410,28 @@ header {
     <div class="form-container">
         <h2 class="form-title">COMPRAR AVENTURAS</h2>
         
+        <!-- LOGIN SECTION -->
+        <div class="login-section">
+            <h3 class="login-title">Faça login para comprar</h3>
+            <div class="form-group">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" class="form-input" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="loginPassword" class="form-input" placeholder="Senha" required>
+            </div>
+            <button type="button" id="loginBtn" class="submit-btn">ENTRAR</button>
+        </div>
+        
         <div class="adventures-container">
             <div class="adventure-card">
                 <h3 class="adventure-title"><i class="fas fa-water"></i> Rafting no Rio Manso</h3>
                 <p class="adventure-description">Descida emocionante pelas corredeiras do Rio Manso com guias experientes. Inclui equipamento completo e seguro.</p>
                 <div class="adventure-price">R$ 250,00 por pessoa</div>
                 <div class="quantity-selector">
-                    <button class="quantity-btn minus" data-adventure="rafting">-</button>
-                    <input type="number" class="quantity-input" id="rafting-qty" min="0" value="0">
+                    <button class="quantity-btn minus" data-adventure="rafting" disabled>-</button>
+                    <input type="number" class="quantity-input" id="rafting-qty" min="0" max="100" value="0">
                     <button class="quantity-btn plus" data-adventure="rafting">+</button>
                 </div>
             </div>
@@ -386,8 +441,8 @@ header {
                 <p class="adventure-description">Explore as águas calmas do Rio Manso em um kayak individual ou duplo. Perfeito para apreciar a natureza.</p>
                 <div class="adventure-price">R$ 180,00 por pessoa</div>
                 <div class="quantity-selector">
-                    <button class="quantity-btn minus" data-adventure="kayak">-</button>
-                    <input type="number" class="quantity-input" id="kayak-qty" min="0" value="0">
+                    <button class="quantity-btn minus" data-adventure="kayak" disabled>-</button>
+                    <input type="number" class="quantity-input" id="kayak-qty" min="0" max="100" value="0">
                     <button class="quantity-btn plus" data-adventure="kayak">+</button>
                 </div>
             </div>
@@ -397,8 +452,8 @@ header {
                 <p class="adventure-description">Caminhada guiada pelas trilhas da Serra do Rio Manso com observação de fauna e flora nativas.</p>
                 <div class="adventure-price">R$ 120,00 por pessoa</div>
                 <div class="quantity-selector">
-                    <button class="quantity-btn minus" data-adventure="trilha">-</button>
-                    <input type="number" class="quantity-input" id="trilha-qty" min="0" value="0">
+                    <button class="quantity-btn minus" data-adventure="trilha" disabled>-</button>
+                    <input type="number" class="quantity-input" id="trilha-qty" min="0" max="100" value="0">
                     <button class="quantity-btn plus" data-adventure="trilha">+</button>
                 </div>
             </div>
@@ -406,7 +461,7 @@ header {
         
         <div class="total-section">
             <div class="total-label">TOTAL DA COMPRA</div>
-            <div class="total-amount" id="total-amount">R$ 550,00</div>
+            <div class="total-amount" id="total-amount">R$ 0,00</div>
         </div>
         
         <form id="purchaseForm">
@@ -430,13 +485,29 @@ header {
             <button type="submit" class="submit-btn">FINALIZAR COMPRA</button>
             
             <div class="img-logoh">
-                <img src="assets/arakaki-removebg-preview.png" alt="Arakaki Aventuras">
+                <img src="assets/arakaki-removebg-preview.png" alt="">
             </div>
         </form>
     </div>
 </div>
 
 <script>
+// Login functionality
+let isLoggedIn = false;
+
+document.getElementById('loginBtn').addEventListener('click', function() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    if (email && password) {
+        isLoggedIn = true;
+        document.body.classList.add('logged-in');
+        alert('Login realizado com sucesso!');
+    } else {
+        alert('Por favor, preencha todos os campos.');
+    }
+});
+
 // Quantity selectors
 document.querySelectorAll('.quantity-btn').forEach(button => {
     button.addEventListener('click', function() {
@@ -445,11 +516,15 @@ document.querySelectorAll('.quantity-btn').forEach(button => {
         let value = parseInt(input.value);
         
         if (this.classList.contains('plus')) {
-            input.value = value + 1;
-        } else if (this.classList.contains('minus') && value > 1) {
+            if (value < 100) {
+                input.value = value + 1;
+            }
+        } else if (this.classList.contains('minus') && value > 0) {
             input.value = value - 1;
         }
         
+        // Update button states
+        updateButtonStates();
         calculateTotal();
     });
 });
@@ -457,10 +532,29 @@ document.querySelectorAll('.quantity-btn').forEach(button => {
 // Input change event
 document.querySelectorAll('.quantity-input').forEach(input => {
     input.addEventListener('change', function() {
-        if (this.value < 1) this.value = 1;
+        let value = parseInt(this.value);
+        if (isNaN(value) || value < 0) {
+            this.value = 0;
+        } else if (value > 100) {
+            this.value = 100;
+        }
+        updateButtonStates();
         calculateTotal();
     });
 });
+
+// Update minus button states based on quantity
+function updateButtonStates() {
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        const adventure = input.id.replace('-qty', '');
+        const minusBtn = document.querySelector(`.minus[data-adventure="${adventure}"]`);
+        if (parseInt(input.value) <= 0) {
+            minusBtn.disabled = true;
+        } else {
+            minusBtn.disabled = false;
+        }
+    });
+}
 
 // Calculate total
 function calculateTotal() {
@@ -480,6 +574,11 @@ function calculateTotal() {
 // Form submission
 document.getElementById('purchaseForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    if (!isLoggedIn) {
+        alert('Por favor, faça login para finalizar a compra.');
+        return;
+    }
     
     const fullName = document.getElementById('fullName').value;
     const email = document.getElementById('email').value;
@@ -507,13 +606,15 @@ document.getElementById('purchaseForm').addEventListener('submit', function(e) {
     
     // Reset form
     this.reset();
-    document.getElementById('rafting-qty').value = 1;
-    document.getElementById('kayak-qty').value = 1;
-    document.getElementById('trilha-qty').value = 1;
+    document.getElementById('rafting-qty').value = 0;
+    document.getElementById('kayak-qty').value = 0;
+    document.getElementById('trilha-qty').value = 0;
+    updateButtonStates();
     calculateTotal();
 });
 
-// Initialize total
+// Initialize
+updateButtonStates();
 calculateTotal();
 </script>
 </body>
