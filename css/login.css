@@ -1,0 +1,313 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink2: #FF6BCC;
+    --pink: #FF89CC;
+    --primary-pink: #ff3399;
+    --secondary-blue: #3B75E9;
+    --white: #ffffff;
+}
+
+
+body {
+    font-family: 'Bellefair', serif;
+    background-image: url(assets/fundo3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #ff66cc, #ff99cc);
+    border-bottom: 3px solid #ff3399;
+    padding: 15px 20px;
+    z-index: 1000;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+}
+
+/* ===== HEADER - BOTÃO EXTERNO ===== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.site-back-link {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Bellefair', serif;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s ease;
+}
+
+.site-back-link:hover {
+    color: var(--secondary-blue);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--primary-pink);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.form-title {
+    text-align: center;
+    color: var(--white);
+    font-size: 28px;
+    margin-bottom: 32px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ===== FORMULÁRIOS ===== */
+.form-group {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--white);
+    border-radius: 8px;
+    color: var(--pink2);
+    font-family: 'Bellefair', serif;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-input:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-input:focus {
+    background: #ff3399;
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 3px rgba(255, 51, 153, 0.3);
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--white);
+    font-size: 20px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 8px;
+    font-family: 'Bellefair', serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.submit-btn:hover {
+    background-color: #3B75E9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.forgot-password {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: 'Bellefair', serif;
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 16px;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--secondary-blue);
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 16px;
+}
+
+.form-footer a,
+.form-footer button {
+    color: var(--primary-pink);
+    text-decoration: none;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Bellefair', serif;
+    transition: color 0.3s ease;
+}
+
+.form-footer a:hover,
+.form-footer button:hover {
+    color: var(--secondary-blue);
+    text-decoration: underline;
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+.back-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--primary-pink);
+    text-decoration: none;
+    font-family: 'Bellefair', serif;
+    font-weight: bold;
+    margin-top: 24px;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--secondary-blue);
+}
+
+/* ===== PÁGINAS ===== */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.img-logoh{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.img-logoh img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== VALIDAÇÃO DE SENHA ===== */
+.password-requirements {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+    padding-left: 48px;
+}
+
+.password-requirements.valid {
+    color: #4CAF50;
+}
+
+.password-requirements.invalid {
+    color: #f44336;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 30px 20px;
+    }
+    
+    .form-title {
+        font-size: 24px;
+    }
+    
+    .header-container {
+        padding: 0 15px;
+    }
+}
