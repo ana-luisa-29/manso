@@ -59,10 +59,11 @@ header {
     margin: 0 auto;
 }
 
-.logo {
+.logo4 img {
     display: flex;
     align-items: center;
     gap: 15px;
+    border-radius: 100%;
 }
 
 .img-logoh {
@@ -94,7 +95,7 @@ nav a {
 nav a:hover {
     background: #3B75E9;
     color: #ffffff;
-    border: 3px solid #ffffff;
+    border: 3px solid #ff3399;
     transform: translateY(-2px);
     box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
 }
