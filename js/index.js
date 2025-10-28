@@ -1,44 +1,44 @@
-// Função para rolar para o topo
+// Rolar para o topo (não usado, mas mantido)
 function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Animação de digitação para o título principal
-document.addEventListener('DOMContentLoaded', function() {
+// Animação de digitação
+document.addEventListener('DOMContentLoaded', function () {
     const heroTitle = document.querySelector('.hero h1');
-    const originalText = heroTitle.textContent;
-    heroTitle.textContent = '';
-    
-    let i = 0;
-    const typing = setInterval(() => {
-        if (i < originalText.length) {
-            heroTitle.textContent += originalText.charAt(i);
-            i++;
-        } else {
-            clearInterval(typing);
-        }
-    }, 100);
+    if (heroTitle) {
+        const originalText = heroTitle.textContent.trim();
+        heroTitle.textContent = '';
+        let i = 0;
+        const typing = setInterval(() => {
+            if (i < originalText.length) {
+                heroTitle.textContent += originalText.charAt(i);
+                i++;
+            } else {
+                clearInterval(typing);
+            }
+        }, 100);
+    }
 });
 
-// Menu de navegação suave
+// Navegação suave (apenas para âncoras internas)
 document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 100,
-                behavior: 'smooth'
-            });
-        }
-    });
+    const href = anchor.getAttribute('href');
+    if (href && href.startsWith('#')) {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
 });
 
-// Efeito de brilho ao passar o mouse
+// Efeito de brilho nos cards
 const featureCards = document.querySelectorAll('.feature-card');
 featureCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
@@ -49,8 +49,8 @@ featureCards.forEach(card => {
     });
 });
 
-// Efeito de piscar nos botões
-const barbieButtons = document.querySelectorAll('.barbie-button');
+// Piscar nos botões
+const barbieButtons = document.querySelectorAll('.barbie-button, .barbie-button2');
 barbieButtons.forEach(button => {
     button.addEventListener('mouseenter', () => {
         button.style.animation = 'pulse 0.5s infinite';
@@ -60,17 +60,19 @@ barbieButtons.forEach(button => {
     });
 });
 
-// Profile photo upload functionality
+// Upload de foto de perfil
 const profilePhotoUpload = document.getElementById('profilePhotoUpload');
 const profilePhotoContainer = document.getElementById('profilePhotoContainer');
 
-profilePhotoUpload.addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profilePhotoContainer.innerHTML = `<img src="${e.target.result}" alt="Profile Photo">`;
+if (profilePhotoUpload && profilePhotoContainer) {
+    profilePhotoUpload.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                profilePhotoContainer.innerHTML = `<img src="${e.target.result}" alt="Foto de Perfil">`;
+            };
+            reader.readAsDataURL(file);
         }
-        reader.readAsDataURL(file);
-    }
-});
+    });
+}
