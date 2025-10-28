@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Arakaki Aventuras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo4">
+                <img src="assets/logo4.jpg" alt="Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">INÍCIO</a></li>
+                    <li><a href="index.html#sobre">SOBRE</a></li>
+                    <li><a href="index.html#servicos">SERVIÇOS</a></li>
+                    <li><a href="https://ana-luisa-29.github.io/perfil-contato/">CONTATO</a></li>
+                </ul>
+            </nav>
+            <a href="compras.html" class="btn-inicio">COMPRAS</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <!-- Foto de perfil -->
+            <div class="profile-header">
+                <div class="profile-photo" id="profilePhotoDisplay">
+                    <span>👤</span>
+                </div>
+                <h1 id="profileName">Visitante</h1>
+                <p id="profileBio">Aventureiro nas águas do Rio Manso 🌊</p>
+                <label for="photoUpload" class="upload-btn">ALTERAR FOTO</label>
+                <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+            </div>
+
+            <!-- Stats estilo GitHub -->
+            <div class="github-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="reservasCount">0</div>
+                    <div class="stat-label">Reservas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="aventurasCount">3</div>
+                    <div class="stat-label">Aventuras</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Diversão</div>
+                </div>
+            </div>
+
+            <!-- Atividades recentes -->
+            <div class="recent-activity">
+                <h2>Atividades Recentes</h2>
+                <ul id="activityList">
+                    <li>Nenhuma atividade registrada ainda.</li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="barbie-button back-button">VOLTAR PARA INÍCIO</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ARAKAKI AVENTURAS - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="js/perfil.js"></script>
+</body>
+</html>
