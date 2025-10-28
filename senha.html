@@ -1,0 +1,39 @@
+<!-- pages/forgot-password.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueci a Senha - Arakaki Aventuras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/senha.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="login.html" class="site-back-link">
+                <i class="fas fa-arrow-left"></i> Voltar para o login
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">RECUPERAR SENHA</h2>
+            <form id="forgotForm">
+                <div class="form-group">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="forgotEmail" class="form-input" placeholder="seu@email.com" required>
+                </div>
+                <button type="submit" class="submit-btn">ENVIAR INSTRUÇÕES</button>
+                <div class="img-logoh">
+                    <img src="../assets/arakaki-removebg-preview.png" alt="Logo Arakaki Aventuras">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/senha.js"></script>
+</body>
+</html>

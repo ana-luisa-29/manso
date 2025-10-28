@@ -1,3 +1,4 @@
+/* css/forgot-password.css */
 * {
     margin: 0;
     padding: 0;
@@ -122,17 +123,6 @@ header {
     color: var(--white);
     font-size: 20px;
 }
-.toggle-password {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--white);
-    cursor: pointer;
-    font-size: 18px;
-}
 .submit-btn {
     width: 100%;
     padding: 14px;
@@ -152,24 +142,6 @@ header {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-.forgot-password {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-family: 'Bellefair', serif;
-    font-size: 16px;
-    text-decoration: underline;
-    cursor: pointer;
-    margin-top: 16px;
-    padding: 8px 0;
-    transition: color 0.3s ease;
-}
-.forgot-password:hover {
-    color: var(--secondary-blue);
-}
 .img-logoh {
     display: flex;
     align-items: center;
@@ -179,21 +151,6 @@ header {
 .img-logoh img {
     max-width: 100%;
     height: auto;
-}
-.form-footer {
-    text-align: center;
-    margin-top: 24px;
-    font-size: 16px;
-}
-.form-footer a {
-    color: var(--primary-pink);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-.form-footer a:hover {
-    color: var(--secondary-blue);
-    text-decoration: underline;
 }
 @media (max-width: 480px) {
     .form-container {

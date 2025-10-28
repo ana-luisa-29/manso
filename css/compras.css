@@ -13,7 +13,7 @@
 
 body {
     font-family: 'Bellefair', serif;
-    background-image: url(assets/fundo.jpg);
+    background-image: url('https://images4.alphacoders.com/134/thumb-1920-1349540.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
