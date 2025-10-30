@@ -1,47 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const photoUpload = document.getElementById('photoUpload');
-    const profilePhotoDisplay = document.getElementById('profilePhotoDisplay');
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const nomeEl = document.getElementById('nomeUsuario');
+    const emailEl = document.getElementById('emailUsuario');
     const profileName = document.getElementById('profileName');
-    const profileBio = document.getElementById('profileBio');
-    const activityList = document.getElementById('activityList');
 
-    // Carregar dados do perfil (simulados ou do localStorage)
-    const savedPhoto = localStorage.getItem('profilePhoto');
-    const savedName = localStorage.getItem('profileName') || 'Visitante';
-    const savedBio = localStorage.getItem('profileBio') || 'Aventureiro nas águas do Rio Manso 🌊';
-
-    if (savedPhoto) {
-        profilePhotoDisplay.innerHTML = `<img src="${savedPhoto}" alt="Foto de Perfil">`;
+    if (usuario) {
+        nomeEl.textContent = usuario.nome;
+        emailEl.textContent = usuario.email;
+        profileName.textContent = usuario.nome;
+    } else {
+        // Não logado → redirecionar para login
+        alert('Você precisa estar logado para ver seu perfil.');
+        window.location.href = 'login.html';
     }
 
-    profileName.textContent = savedName;
-    profileBio.textContent = savedBio;
-
-    // Simular atividades recentes (você pode expandir isso depois)
-    const atividades = JSON.parse(localStorage.getItem('atividades')) || [];
-    if (atividades.length > 0) {
-        activityList.innerHTML = '';
-        atividades.slice(0, 5).forEach(ativ => {
-            const li = document.createElement('li');
-            li.textContent = ativ;
-            activityList.appendChild(li);
-        });
+    // Foto de perfil
+    const foto = localStorage.getItem('profilePhoto');
+    const photoDisplay = document.getElementById('profilePhotoDisplay');
+    if (foto && photoDisplay) {
+        photoDisplay.innerHTML = `<img src="${foto}" alt="Foto de Perfil">`;
     }
 
-    // Upload de nova foto
-    photoUpload.addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                profilePhotoDisplay.innerHTML = `<img src="${event.target.result}" alt="Foto de Perfil">`;
-                localStorage.setItem('profilePhoto', event.target.result);
-            };
-            reader.readAsDataURL(file);
-        }
+    // Logout
+    document.getElementById('logoutBtn')?.addEventListener('click', () => {
+        localStorage.removeItem('usuarioLogado');
+        localStorage.removeItem('profilePhoto'); // opcional
+        alert('Você saiu da sua conta.');
+        window.location.href = 'index.html';
     });
-
-    // Atualizar contagem de reservas (simulada)
-    const reservas = JSON.parse(localStorage.getItem('reservas')) || [];
-    document.getElementById('reservasCount').textContent = reservas.length;
 });

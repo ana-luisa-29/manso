@@ -1,10 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Função para rolar para o topo
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Animação de digitação
+    // === Animações existentes ===
     const heroTitle = document.querySelector('.hero h1');
     if (heroTitle) {
         const originalText = heroTitle.textContent;
@@ -20,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 100);
     }
 
-    // Navegação suave
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -39,29 +33,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Efeitos visuais
-    document.querySelectorAll('.feature-card').forEach(card => {
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
         card.addEventListener('mouseenter', () => card.style.boxShadow = '0 0 20px #ff3399');
-        card.addEventListener('mouseleave', () => card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)');
+        // card.addEventListener('mouseleave', () => card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
     });
 
-    document.querySelectorAll('.barbie-button').forEach(button => {
+    const barbieButtons = document.querySelectorAll('.barbie-button');
+    barbieButtons.forEach(button => {
         button.addEventListener('mouseenter', () => button.style.animation = 'pulse 0.5s infinite');
-        button.addEventListener('mouseleave', () => button.style.animation = 'none');
+        // button.addEventListener('mouseleave', () => button.style.animation = 'none';
     });
 
-    // ✅ FUNCIONALIDADE DE FOTO DE PERFIL (CORRIGIDA)
+    // === Foto de perfil na sidebar ===
     const profilePhotoUpload = document.getElementById('profilePhotoUpload');
     const profilePhotoContainer = document.getElementById('profilePhotoContainer');
-
     if (profilePhotoUpload && profilePhotoContainer) {
-        // Carregar foto salva
-        const saved = localStorage.getItem('profilePhoto');
-        if (saved) {
-            profilePhotoContainer.innerHTML = `<img src="${saved}" alt="Foto de Perfil">`;
+        const savedPhoto = localStorage.getItem('profilePhoto');
+        if (savedPhoto) {
+            profilePhotoContainer.innerHTML = `<img src="${savedPhoto}" alt="Foto de Perfil">`;
         }
-
-        // Upload novo
         profilePhotoUpload.addEventListener('change', function (e) {
             const file = e.target.files[0];
             if (file) {
@@ -74,13 +65,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-});
 
-// Mostrar saudação no index
-document.addEventListener('DOMContentLoaded', function () {
-    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
-    const greetingEl = document.getElementById('userGreeting');
-    if (greetingEl && usuario) {
-        greetingEl.textContent = `Olá, ${usuario.nome}!`;
+    // === Atualizar header com foto + nome do usuário logado ===
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const headerProfile = document.getElementById('headerProfile');
+    const headerProfilePhoto = document.querySelector('.header-profile-photo');
+
+    if (usuarioLogado && headerProfile) {
+        // Remover botão de login
+        const loginBtn = document.querySelector('.btn-inicio[href="login.html"]');
+        if (loginBtn) loginBtn.remove();
+
+        // Carregar foto ou usar ícone
+        const fotoSalva = localStorage.getItem('profilePhoto');
+        if (fotoSalva && headerProfilePhoto) {
+            headerProfilePhoto.innerHTML = `<img src="${fotoSalva}" alt="Perfil" style="width:40px; height:40px; border-radius:50%; border:2px solid #ff3399;">`;
+        } else if (headerProfilePhoto) {
+            headerProfilePhoto.innerHTML = `<span style="font-size:24px;">👤</span>`;
+        }
     }
 });
