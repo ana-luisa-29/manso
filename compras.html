@@ -1,122 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compras - Arakaki Aventuras</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/compras.css">
-    <style>
-/* ===== RESET E CORES ===== */
-
-</style>
 </head>
 <body>
-<!-- HEADER -->
-<header>
-    <div class="header-container">
-        <div class="logo-container">
-            <div class="logo-circle">A</div>
-            <div class="logo-text">Arakaki Aventuras</div>
-        </div>
-        <div class="header-actions">
+    <header>
+        <div class="header-container">
+            <div class="logo4">
+                <img src="assets/logo4.jpg" alt="Logo">
+            </div>
             <a href="index.html" class="site-back-link">
                 <i class="fas fa-arrow-left"></i> Voltar para o site
             </a>
         </div>
-    </div>
-</header>
+    </header>
 
-<!-- CONTAINER PRINCIPAL -->
-<div class="container">
-    <div class="form-container">
-        <h2 class="form-title">COMPRAR AVENTURAS</h2>
-        
-        <!-- LOGIN SECTION -->
-        <div class="login-section">
-            <h3 class="login-title">Faça login para comprar</h3>
-            <div class="form-group">
-                <i class="fas fa-envelope input-icon"></i>
-                <input type="email" id="loginEmail" class="form-input" placeholder="seu@email.com" required>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">RESERVAR AVENTURAS</h2>
+
+            <!-- Mensagem se NÃO estiver logado -->
+            <div id="loginRequired" class="login-required">
+                <p>Você precisa estar logado para fazer reservas.</p>
+                <a href="login.html" class="barbie-button">FAZER LOGIN</a>
             </div>
-            <div class="form-group">
-                <i class="fas fa-lock input-icon"></i>
-                <input type="password" id="loginPassword" class="form-input" placeholder="Senha" required>
-            </div>
-            <button type="button" id="loginBtn" class="submit-btn">ENTRAR</button>
-        </div>
-        
-        <div class="adventures-container">
-            <div class="adventure-card">
-                <h3 class="adventure-title"><i class="fas fa-water"></i> Rafting no Rio Manso</h3>
-                <p class="adventure-description">Descida emocionante pelas corredeiras do Rio Manso com guias experientes. Inclui equipamento completo e seguro.</p>
-                <div class="adventure-price">R$ 250,00 por pessoa</div>
-                <div class="quantity-selector">
-                    <button class="quantity-btn minus" data-adventure="rafting" disabled>-</button>
-                    <input type="number" class="quantity-input" id="rafting-qty" min="0" max="100" value="0">
-                    <button class="quantity-btn plus" data-adventure="rafting">+</button>
+
+            <!-- Área de compra (aparece só se logado) -->
+            <div id="purchaseArea" style="display: none;">
+                <div class="user-info">
+                    <p><strong>Olá,</strong> <span id="userName">—</span>!</p>
+                    <p><strong>E-mail:</strong> <span id="userEmail">—</span></p>
                 </div>
-            </div>
-            
-            <div class="adventure-card">
-                <h3 class="adventure-title"><i class="fas fa-kayak"></i> Passeio de Kayak</h3>
-                <p class="adventure-description">Explore as águas calmas do Rio Manso em um kayak individual ou duplo. Perfeito para apreciar a natureza.</p>
-                <div class="adventure-price">R$ 180,00 por pessoa</div>
-                <div class="quantity-selector">
-                    <button class="quantity-btn minus" data-adventure="kayak" disabled>-</button>
-                    <input type="number" class="quantity-input" id="kayak-qty" min="0" max="100" value="0">
-                    <button class="quantity-btn plus" data-adventure="kayak">+</button>
+
+                <div class="adventures-container">
+                    <div class="adventure-card">
+                        <h3><i class="fas fa-water"></i> Rafting Extremo</h3>
+                        <p>Descida pelas corredeiras com guias experientes.</p>
+                        <div class="adventure-price">R$ 250,00</div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus" data-adventure="rafting" disabled>-</button>
+                            <input type="number" class="quantity-input" id="rafting-qty" min="0" max="10" value="0">
+                            <button class="quantity-btn plus" data-adventure="rafting">+</button>
+                        </div>
+                    </div>
+
+                    <div class="adventure-card">
+                        <h3><i class="fas fa-kayak"></i> Kayak Aventura</h3>
+                        <p>Explore os recantos do Lago do Manso.</p>
+                        <div class="adventure-price">R$ 180,00</div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus" data-adventure="kayak" disabled>-</button>
+                            <input type="number" class="quantity-input" id="kayak-qty" min="0" max="10" value="0">
+                            <button class="quantity-btn plus" data-adventure="kayak">+</button>
+                        </div>
+                    </div>
+
+                    <div class="adventure-card">
+                        <h3><i class="fas fa-hiking"></i> Trilhas Ecológicas</h3>
+                        <p>Caminhada guiada pela mata ciliar.</p>
+                        <div class="adventure-price">R$ 120,00</div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus" data-adventure="trilha" disabled>-</button>
+                            <input type="number" class="quantity-input" id="trilha-qty" min="0" max="10" value="0">
+                            <button class="quantity-btn plus" data-adventure="trilha">+</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="adventure-card">
-                <h3 class="adventure-title"><i class="fas fa-hiking"></i> Trilha Ecológica</h3>
-                <p class="adventure-description">Caminhada guiada pelas trilhas da Serra do Rio Manso com observação de fauna e flora nativas.</p>
-                <div class="adventure-price">R$ 120,00 por pessoa</div>
-                <div class="quantity-selector">
-                    <button class="quantity-btn minus" data-adventure="trilha" disabled>-</button>
-                    <input type="number" class="quantity-input" id="trilha-qty" min="0" max="100" value="0">
-                    <button class="quantity-btn plus" data-adventure="trilha">+</button>
+
+                <div class="total-section">
+                    <div class="total-label">TOTAL</div>
+                    <div class="total-amount" id="total-amount">R$ 0,00</div>
                 </div>
+
+                <form id="purchaseForm">
+                    <div class="form-group">
+                        <i class="fas fa-phone input-icon"></i>
+                        <input type="tel" id="phone" class="form-input" placeholder="(65) 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-calendar input-icon"></i>
+                        <input type="date" id="adventureDate" class="form-input" required>
+                    </div>
+                    <button type="submit" class="submit-btn">FINALIZAR RESERVA</button>
+                    <div class="img-logoh">
+                        <img src="assets/arakaki-removebg-preview.png" alt="Logo">
+                    </div>
+                </form>
             </div>
         </div>
-        
-        <div class="total-section">
-            <div class="total-label">TOTAL DA COMPRA</div>
-            <div class="total-amount" id="total-amount">R$ 0,00</div>
-        </div>
-        
-        <form id="purchaseForm">
-            <div class="form-group">
-                <i class="fas fa-user input-icon"></i>
-                <input type="text" id="fullName" class="form-input" placeholder="Seu nome completo" required>
-            </div>
-            <div class="form-group">
-                <i class="fas fa-envelope input-icon"></i>
-                <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
-            </div>
-            <div class="form-group">
-                <i class="fas fa-phone input-icon"></i>
-                <input type="tel" id="phone" class="form-input" placeholder="(00) 00000-0000" required>
-            </div>
-            <div class="form-group">
-                <i class="fas fa-calendar input-icon"></i>
-                <input type="date" id="adventureDate" class="form-input" required>
-            </div>
-            
-            <button type="submit" class="submit-btn">FINALIZAR COMPRA</button>
-            
-            <div class="img-logoh">
-                <img src="assets/arakaki-removebg-preview.png" alt="">
-            </div>
-        </form>
     </div>
-</div>
+
     <script src="js/compras.js"></script>
 </body>
 </html>
